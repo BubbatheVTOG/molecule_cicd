@@ -69,7 +69,7 @@ pipeline {
             '''
           }
         }
-        stage ('Stage 4.3: Test NFS Role') {
+        stage ('Stage 4.4: Test NFS Role') {
           steps {
             sh '''
               source virtenv/bin/activate
