@@ -6,7 +6,7 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: instance
+  - name: instance_nfs
     image: "geerlingguy/docker-centos7-ansible:latest"
     command: ""
     volumes:

@@ -6,7 +6,7 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: instance
+  - name: instance_webserver
     image: centos:7
     command: /sbin/init
     #   privileged: True
