@@ -69,6 +69,17 @@ pipeline {
             '''
           }
         }
+        stage ('Stage 4.3: Test NFS Role') {
+          steps {
+            sh '''
+              source virtenv/bin/activate
+              pushd roles/nfs
+              molecule test
+              popd
+              deactivate
+            '''
+          }
+        }
       }
     }
 
