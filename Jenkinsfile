@@ -35,51 +35,49 @@ pipeline {
     }
 
     stage ('Stage 4: Molecule Tests') {
-      stages {
-        parallel {
-          stage ('Stage 4.1: Test Common Role') {
-            steps {
-              sh '''
-                source virtenv/bin/activate
-                pushd roles/common
-                molecule test
-                popd
-                deactivate
-              '''
-            }
+      parallel {
+        stage ('Stage 4.1: Test Common Role') {
+          steps {
+            sh '''
+              source virtenv/bin/activate
+              pushd roles/common
+              molecule test
+              popd
+              deactivate
+            '''
           }
-          stage ('Stage 4.2: Test Reverse Proxy Role') {
-            steps {
-              sh '''
-                source virtenv/bin/activate
-                pushd roles/reverse_proxy
-                molecule test
-                popd
-                deactivate
-              '''
-            }
+        }
+        stage ('Stage 4.2: Test Reverse Proxy Role') {
+          steps {
+            sh '''
+              source virtenv/bin/activate
+              pushd roles/reverse_proxy
+              molecule test
+              popd
+              deactivate
+            '''
           }
-          stage ('Stage 4.3: Test Web Server Role') {
-            steps {
-              sh '''
-                source virtenv/bin/activate
-                pushd roles/webserver
-                molecule test
-                popd
-                deactivate
-              '''
-            }
+        }
+        stage ('Stage 4.3: Test Web Server Role') {
+          steps {
+            sh '''
+              source virtenv/bin/activate
+              pushd roles/webserver
+              molecule test
+              popd
+              deactivate
+            '''
           }
-          stage ('Stage 4.3: Test NFS Role') {
-            steps {
-              sh '''
-                source virtenv/bin/activate
-                pushd roles/nfs
-                molecule test
-                popd
-                deactivate
-              '''
-            }
+        }
+        stage ('Stage 4.3: Test NFS Role') {
+          steps {
+            sh '''
+              source virtenv/bin/activate
+              pushd roles/nfs
+              molecule test
+              popd
+              deactivate
+            '''
           }
         }
       }
